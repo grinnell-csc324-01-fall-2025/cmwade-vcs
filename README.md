@@ -1,7 +1,7 @@
 # cmwade-vcs
 Charlotte's solo project for 324
 
-VCS (short for Visual Character System) is an sdl-based audio/visual/input system designed to provide the basic functionality of ncurses, plus some extras. It is designed to merge the simplicity and ease-of-use of ascii-art graphics with the capabilities of modern graphics and audio systems.
+VCS (short for Visual Character System) is an sdl-based graphics system designed to provide the basic functionality of ncurses, plus some extras. It is designed to merge the simplicity and ease-of-use of ascii-art graphics with the capabilities of modern graphics and audio systems.
 
 ##### Features
 * SDL window which renders an array of 8x8 ASCII characters in its own thread, in a style much like ncurses.
