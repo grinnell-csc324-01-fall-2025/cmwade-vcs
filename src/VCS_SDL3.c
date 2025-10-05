@@ -63,9 +63,9 @@ int VCS_update(VCS_info_t* info) {
       str[0] = info->rp->content[(chary*info->width + charx)].c;
       text = TTF_CreateText(info->textEngine, info->font, str, 1);
       TTF_DrawSurfaceText(text, x, y, info->textSurface);
+      TTF_DestroyText(text);
     }
   }
-  TTF_DestroyText(text);
 
   uint32_t* pix;
   int pitch;
