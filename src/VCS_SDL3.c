@@ -110,7 +110,13 @@ void VCS_quit(VCS_info_t* info) {
   SDL_DestroyTexture(info->renderTexture);
   SDL_DestroyRenderer(info->renderer);
   SDL_DestroyWindow(info->window);
-  // TODO: More stuff to destroy here
+  SDL_DestroySurface(info->textSurface);
+  TTF_DestroySurfaceTextEngine(info->textEngine);
+  TTF_CloseFont(info->font);
+  free(info->fg);
+  free(info->bg);
+  VCS_rp_free_contents(info->rp);
+  free(info->rp);
   TTF_Quit();
   SDL_Quit();
 }
