@@ -17,8 +17,8 @@ VCS_info_t VCS_init(char* title, int width, int height, char* fontpath) {
   }
 
   info.success = 1;
-  info.charwidth = 8;  /* Hardcoded for now */
-  info.charheight = 8; /*                   */
+  info.charwidth = 8;  /* Hardcoded for now     */
+  info.charheight = 8; /* TODO: Detect font size*/
   info.width = width;
   info.height = height;
   int windowwidth = width*info.charwidth;
