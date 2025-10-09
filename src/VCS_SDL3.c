@@ -23,23 +23,32 @@ VCS_info_t VCS_init(char* title, int width, int height, char* fontpath) {
   info.height = height;
   int windowwidth = width*info.charwidth;
   int windowheight = height*info.charheight;
+
   info.window = SDL_CreateWindow(title, windowwidth, windowheight, 0);
+  if (info.window == NULL) { info.success = 0; return info; }
   info.renderer = SDL_CreateRenderer(info.window, NULL);
+  if (info.window == NULL) { info.success = 0; return info; }
   info.renderTexture = SDL_CreateTexture(info.renderer, SDL_PIXELFORMAT_ABGR8888, SDL_TEXTUREACCESS_STREAMING, windowwidth, windowheight);
+  if (info.renderTexture == NULL) { info.success = 0; return info; }
+  info.textSurface = SDL_CreateSurface(windowwidth, windowheight, SDL_PIXELFORMAT_ABGR8888);
+  if (info.textSurface == NULL) { info.success = 0; return info; }
+
   info.fg = malloc(sizeof(uint32_t) * windowwidth * windowheight);
   info.bg = malloc(sizeof(uint32_t) * windowwidth * windowheight);
-  info.textSurface = SDL_CreateSurface(windowwidth, windowheight, SDL_PIXELFORMAT_ABGR8888);
-  info.font = TTF_OpenFont(fontpath, info.charwidth);
-  info.textEngine = TTF_CreateSurfaceTextEngine();
-  info.rp = VCS_make_rp(width, height);
+  if (info.fg == NULL || info.bg == NULL) { info.success = 0; return info; }
 
-  // TODO: Also validate all of these and fail if they are not created properly
+  info.font = TTF_OpenFont(fontpath, info.charwidth);
+  if (info.font == NULL) { info.success = 0; return info; }
+  info.textEngine = TTF_CreateSurfaceTextEngine();
+  if (info.textEngine == NULL) { info.success = 0; return info; }
+  info.rp = VCS_make_rp(width, height); // Currently no clean way to tell if RP is created properly, but surely malloc won't fail...? (TODO: fix this)
+
+  info.success = info.success && SDL_SetWindowFullscreen(info.window, 1);
+  info.success = info.success && SDL_SetRenderLogicalPresentation(info.renderer, windowwidth, windowheight,  SDL_LOGICAL_PRESENTATION_LETTERBOX);
+  info.success = info.success && SDL_SetTextureScaleMode(info.renderTexture, SDL_SCALEMODE_NEAREST);
 
   // TODO: Make SDL initialization optional
-  SDL_SetWindowFullscreen(info.window, 1);
-  SDL_SetRenderLogicalPresentation(info.renderer, windowwidth, windowheight,  SDL_LOGICAL_PRESENTATION_LETTERBOX);
-  SDL_SetTextureScaleMode(info.renderTexture, SDL_SCALEMODE_NEAREST);
-
+  
   return info;
 }
 
