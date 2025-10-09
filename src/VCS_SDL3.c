@@ -27,7 +27,7 @@ VCS_info_t VCS_init(char* title, int width, int height, char* fontpath) {
   info.window = SDL_CreateWindow(title, windowwidth, windowheight, 0);
   if (info.window == NULL) { info.success = 0; return info; }
   info.renderer = SDL_CreateRenderer(info.window, NULL);
-  if (info.window == null) { info.success = 0; return info; }
+  if (info.window == NULL) { info.success = 0; return info; }
   info.renderTexture = SDL_CreateTexture(info.renderer, SDL_PIXELFORMAT_ABGR8888, SDL_TEXTUREACCESS_STREAMING, windowwidth, windowheight);
   if (info.renderTexture == NULL) { info.success = 0; return info; }
   info.textSurface = SDL_CreateSurface(windowwidth, windowheight, SDL_PIXELFORMAT_ABGR8888);
@@ -35,7 +35,7 @@ VCS_info_t VCS_init(char* title, int width, int height, char* fontpath) {
 
   info.fg = malloc(sizeof(uint32_t) * windowwidth * windowheight);
   info.bg = malloc(sizeof(uint32_t) * windowwidth * windowheight);
-  if (fg == NULL || bg == NULL) { info.success = 0; return info; }
+  if (info.fg == NULL || info.bg == NULL) { info.success = 0; return info; }
 
   info.font = TTF_OpenFont(fontpath, info.charwidth);
   if (info.font == NULL) { info.success = 0; return info; }
