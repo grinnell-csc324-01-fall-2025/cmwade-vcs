@@ -16,6 +16,16 @@ VCS_info_t VCS_init(char* title, int width, int height, char* fontpath) {
     return info;
   }
 
+  info.font = TTF_OpenFont(fontpath, 8);
+  if (info.font == NULL) { info.success = 0; return info; }
+  
+  info.textEngine = TTF_CreateSurfaceTextEngine();
+  if (info.textEngine == NULL) { info.success = 0; return info; }
+  
+  TTF_Text* text = TTF_CreateText(info.textEngine, info.font, "A", 1);
+  TTF_GetTextSize(text, &(info.charwidth), &(info.charheight));
+  TTF_DestroyText(text);
+
   info.success = 1;
   info.width = width;
   info.height = height;
@@ -34,16 +44,6 @@ VCS_info_t VCS_init(char* title, int width, int height, char* fontpath) {
   info.fg = malloc(sizeof(uint32_t) * windowwidth * windowheight);
   info.bg = malloc(sizeof(uint32_t) * windowwidth * windowheight);
   if (info.fg == NULL || info.bg == NULL) { info.success = 0; return info; }
-
-  info.font = TTF_OpenFont(fontpath, 8);
-  if (info.font == NULL) { info.success = 0; return info; }
-  
-  info.textEngine = TTF_CreateSurfaceTextEngine();
-  if (info.textEngine == NULL) { info.success = 0; return info; }
-  
-  TTF_Text* text = TTF_CreateText(info->textEngine, info->font, "A", 1);
-  TTF_GetTextSize(&text, &info.charwidth, &info.charheight);
-  TTF_DestroyText(&text);
 
   info.rp = VCS_make_rp(width, height); // Currently no clean way to tell if RP is created properly, but surely malloc won't fail...? (TODO: fix this)
 

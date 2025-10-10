@@ -14,7 +14,7 @@ uint32_t blinkblueshader(int x, int y, void* arg) {
 }
 
 int main() {
-  VCS_info_t info = VCS_init("Welcome to VCS", 5, 5, "./8x8.ttf");
+  VCS_info_t info = VCS_init("Welcome to VCS", 5, 5, "./8x16.ttf");
   int ticks;
 
   VCS_rp_set(info.rp, 2, 1, VCS_make_dynchar('N',VCS_whiteshader,VCS_blackshader,NULL,NULL));
