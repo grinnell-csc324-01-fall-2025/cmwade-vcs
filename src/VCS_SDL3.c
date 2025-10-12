@@ -9,16 +9,23 @@
 #include "VCS_renderpanel.h"
 #include "VCS_info.h"
 
-VCS_info_t VCS_init(char* title, int width, int height, char* fontpath) {
+VCS_info_t VCS_init(char* title, int width, int height, int charwidth, int charheight, char* fontpath) {
   VCS_info_t info;
   if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS) || !TTF_Init()) {
     info.success = 0;
     return info;
   }
 
+  info.font = TTF_OpenFont(fontpath, charheight);
+  if (info.font == NULL) { info.success = 0; return info; }
+  
+  info.textEngine = TTF_CreateSurfaceTextEngine();
+  if (info.textEngine == NULL) { info.success = 0; return info; }
+  
+  info.charwidth = charwidth;
+  info.charheight = charheight;
+
   info.success = 1;
-  info.charwidth = 8;  /* Hardcoded for now     */
-  info.charheight = 8; /* TODO: Detect font size*/
   info.width = width;
   info.height = height;
   int windowwidth = width*info.charwidth;
@@ -37,10 +44,6 @@ VCS_info_t VCS_init(char* title, int width, int height, char* fontpath) {
   info.bg = malloc(sizeof(uint32_t) * windowwidth * windowheight);
   if (info.fg == NULL || info.bg == NULL) { info.success = 0; return info; }
 
-  info.font = TTF_OpenFont(fontpath, info.charwidth);
-  if (info.font == NULL) { info.success = 0; return info; }
-  info.textEngine = TTF_CreateSurfaceTextEngine();
-  if (info.textEngine == NULL) { info.success = 0; return info; }
   info.rp = VCS_make_rp(width, height); // Currently no clean way to tell if RP is created properly, but surely malloc won't fail...? (TODO: fix this)
 
   info.success = info.success && SDL_SetWindowFullscreen(info.window, 1);
@@ -67,8 +70,8 @@ int VCS_update(VCS_info_t* info) {
   TTF_Text* text;
   for (int x = 0; x < info->width*info->charwidth; x += info->charwidth) {
     for (int y = 0; y < info->height*info->charheight; y += info->charheight) {
-      int charx = x/8;
-      int chary = y/8;
+      int charx = x/info->charwidth;
+      int chary = y/info->charheight;
       str[0] = info->rp->content[(chary*info->width + charx)].c;
       text = TTF_CreateText(info->textEngine, info->font, str, 1);
       TTF_DrawSurfaceText(text, x, y, info->textSurface);
@@ -87,8 +90,8 @@ int VCS_update(VCS_info_t* info) {
   for (int i = 0; i < info->width*info->charwidth * info->height*info->charheight; i++) {
     int x = i % (info->width*info->charwidth);
     int y = i / (info->width*info->charwidth);
-    int charx = x/8;
-    int chary = y/8;
+    int charx = x/info->charwidth;
+    int chary = y/info->charheight;
     VCS_cpushader fgshader = info->rp->content[(chary*info->width + charx)].fg;
     VCS_cpushader bgshader = info->rp->content[(chary*info->width + charx)].bg;
     void* fgarg = info->rp->content[(chary*info->width + charx)].fgarg;
