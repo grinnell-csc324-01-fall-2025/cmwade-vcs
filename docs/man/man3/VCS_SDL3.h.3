@@ -1,0 +1,50 @@
+.TH "include/VCS_SDL3.h" 3 "Version 0.0.1" "VCS" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+include/VCS_SDL3.h
+.SH SYNOPSIS
+.br
+.PP
+\fR#include 'SDL3/SDL\&.h'\fP
+.br
+\fR#include 'SDL3/SDL_main\&.h'\fP
+.br
+\fR#include 'SDL3_ttf/SDL_ttf\&.h'\fP
+.br
+\fR#include 'VCS_dynchar\&.h'\fP
+.br
+\fR#include 'VCS_renderpanel\&.h'\fP
+.br
+\fR#include 'VCS_info\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBVCS_info_t\fP \fBVCS_init\fP (char *title, int width, int height, int charwidth, int charheight, char *fontpath)"
+.br
+.ti -1c
+.RI "int \fBVCS_update\fP (\fBVCS_info_t\fP *info)"
+.br
+.ti -1c
+.RI "void \fBVCS_render\fP (\fBVCS_info_t\fP *info)"
+.br
+.ti -1c
+.RI "void \fBVCS_quit\fP (\fBVCS_info_t\fP *info)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "\fBVCS_info_t\fP VCS_init (char * title, int width, int height, int charwidth, int charheight, char * fontpath)"
+
+.SS "void VCS_quit (\fBVCS_info_t\fP * info)"
+
+.SS "void VCS_render (\fBVCS_info_t\fP * info)"
+
+.SS "int VCS_update (\fBVCS_info_t\fP * info)"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for VCS from the source code\&.

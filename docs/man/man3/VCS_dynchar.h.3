@@ -1,0 +1,60 @@
+.TH "include/VCS_dynchar.h" 3 "Version 0.0.1" "VCS" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+include/VCS_dynchar.h
+.SH SYNOPSIS
+.br
+.PP
+\fR#include <stdint\&.h>\fP
+.br
+\fR#include <stddef\&.h>\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBVCS_dynchar\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef uint32_t(* \fBVCS_cpushader\fP) (int, int, void *)"
+.br
+.ti -1c
+.RI "typedef struct \fBVCS_dynchar\fP \fBVCS_dynchar_t\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBVCS_dynchar_t\fP \fBVCS_make_dynchar\fP (char c, \fBVCS_cpushader\fP fg, \fBVCS_cpushader\fP bg, void *fgarg, void *bgarg)"
+.br
+.ti -1c
+.RI "uint32_t \fBVCS_blackshader\fP (int x, int y, void *arg)"
+.br
+.ti -1c
+.RI "uint32_t \fBVCS_whiteshader\fP (int x, int y, void *arg)"
+.br
+.in -1c
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef uint32_t(* VCS_cpushader) (int, int, void *)"
+
+.SS "typedef struct \fBVCS_dynchar\fP \fBVCS_dynchar_t\fP"
+
+.SH "Function Documentation"
+.PP 
+.SS "uint32_t VCS_blackshader (int x, int y, void * arg)"
+
+.SS "\fBVCS_dynchar_t\fP VCS_make_dynchar (char c, \fBVCS_cpushader\fP fg, \fBVCS_cpushader\fP bg, void * fgarg, void * bgarg)"
+
+.SS "uint32_t VCS_whiteshader (int x, int y, void * arg)"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for VCS from the source code\&.
