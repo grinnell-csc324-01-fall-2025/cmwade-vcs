@@ -8,6 +8,6 @@ VCS (short for Visual Character System) is an sdl-based graphics system designed
 * Character foreground and background colors configurable by RGB; no more memorizing color codes
 * Keyboard reading handled through SDL (pending)
 * Basic support for playing one-off audio sounds as well as looping a track (pending)
-* Shaders allow you to overlay effects on the background and foreground color layers, rendered on a 1/8 character size grid
+* Shaders allow you to color characters per-pixel, and even animate based on arbitrary input.
 
 Documentation can be found [here](https://grinnell-csc324-01-fall-2025.github.io/cmwade-vcs/html/index.html).
