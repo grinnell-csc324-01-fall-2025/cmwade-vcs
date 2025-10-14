@@ -26,5 +26,9 @@ uninstall:
 	rm $(INSTALL)$(LIBNAME)
 	rm -r $(INCLUDE)
 
+docs: $(CFILES) $(HFILES)
+	doxygen
+
 clean:
 	rm $(COBJECTS) $(LIBNAME)
+

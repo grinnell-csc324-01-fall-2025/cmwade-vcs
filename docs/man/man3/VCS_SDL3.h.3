@@ -1,0 +1,118 @@
+.TH "include/VCS_SDL3.h" 3 "Mon Oct 13 2025" "Version 0.0.1" "VCS" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+include/VCS_SDL3.h
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'SDL3/SDL\&.h'\fP
+.br
+\fC#include 'SDL3/SDL_main\&.h'\fP
+.br
+\fC#include 'SDL3_ttf/SDL_ttf\&.h'\fP
+.br
+\fC#include 'VCS_dynchar\&.h'\fP
+.br
+\fC#include 'VCS_renderpanel\&.h'\fP
+.br
+\fC#include 'VCS_info\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBVCS_info_t\fP \fBVCS_init\fP (char *title, int width, int height, int charwidth, int charheight, char *fontpath)"
+.br
+.ti -1c
+.RI "int \fBVCS_update\fP (\fBVCS_info_t\fP *info)"
+.br
+.ti -1c
+.RI "void \fBVCS_render\fP (\fBVCS_info_t\fP *info)"
+.br
+.ti -1c
+.RI "void \fBVCS_quit\fP (\fBVCS_info_t\fP *info)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "\fBVCS_info_t\fP VCS_init (char * title, int width, int height, int charwidth, int charheight, char * fontpath)"
+Initializes SDL and all required structs for a working render loop, and passes them back in a \fBVCS_info\fP\&. In a typical workflow, the main loop will hold a stack variable containing the returned \fBVCS_info\fP, and pass a reference to it to all rendering code\&. At the end of the mainloop, call \fBVCS_quit()\fP to clean up all of the malloc'd elements of the \fBVCS_info\fP\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fItitle\fP The title that will be given to the SDL window\&. 
+.br
+\fIwidth\fP The width, in characters, of the window\&. 
+.br
+\fIheight\fP The height, in characters, of the window\&. 
+.br
+\fIcharwidth\fP The width, in pixels, of a single character\&. 
+.br
+\fIcharheight\fP The height, in pixels, of a single character\&. 
+.br
+\fIfontpath\fP A path to the TTF font to use\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+A \fBVCS_info\fP struct containing all relevant information for the VCS instance\&. Note that it is returned by value\&. 
+.RE
+.PP
+\fBWarning\fP
+.RS 4
+Call this function only once, in the main thread, before any other VCS functions are called\&. 
+.RE
+.PP
+
+.SS "void VCS_quit (\fBVCS_info_t\fP * info)"
+Handles destruction of all of the fields of a \fBVCS_info\fP and closes the SDL window\&. Call this function once, while the application is shutting down, to close everything\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIinfo\fP A pointer to the \fBVCS_info\fP returned from \fBVCS_init()\fP\&. 
+.RE
+.PP
+
+.SS "void VCS_render (\fBVCS_info_t\fP * info)"
+Renders the texture buffers to the screen\&. Call this function after \fBVCS_update()\fP to display the next frame\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIinfo\fP A pointer to the \fBVCS_info\fP returned from \fBVCS_init()\fP\&. 
+.RE
+.PP
+\fBWarning\fP
+.RS 4
+Call this function from the main thread only\&. 
+.RE
+.PP
+
+.SS "int VCS_update (\fBVCS_info_t\fP * info)"
+Draws the characters stored in \fCinfo\&.rp\fP to the texture buffers stored in \fCinfo\fP so that they may be rendered to the screen later\&. Call this once, after modifying the contents of \fCinfo\&.rp\fP, to allow \fBVCS_render()\fP to render the updated contents\&. Also checks the event queue to see if the application has been told to close; store and reference the return value to make sure you successfully handle when the close button is pressed\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIinfo\fP A pointer to the \fBVCS_info\fP returned from \fBVCS_init()\fP\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+0 if the application has received a quit event, 1 otherwise\&. 
+.RE
+.PP
+\fBNote\fP
+.RS 4
+This should be called every frame, regardless of whether you have updated the character data to display\&. If you have shaders that animate based on the passage of time, it will ensure they are redrawn every frame, and it also needs to constantly check if the application has been asked to close\&. 
+.RE
+.PP
+\fBWarning\fP
+.RS 4
+Call this function from the main thread only\&. 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for VCS from the source code\&.
