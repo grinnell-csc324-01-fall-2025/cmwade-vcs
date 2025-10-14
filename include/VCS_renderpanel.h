@@ -21,7 +21,7 @@ typedef struct VCS_renderpanel {
   int height; 
   /** The contents of the renderpanel. Do not edit manually; use VCS_rp_set(). */
   VCS_dynchar_t* content; 
-} VCS_renderpanel;
+} VCS_renderpanel_t;
 
 /**
  * Initializes a VCS_renderpanel given a pointer to an uninitialized one.

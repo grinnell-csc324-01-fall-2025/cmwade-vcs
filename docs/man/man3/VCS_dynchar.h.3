@@ -1,4 +1,4 @@
-.TH "include/VCS_dynchar.h" 3 "Version 0.0.1" "VCS" \" -*- nroff -*-
+.TH "include/VCS_dynchar.h" 3 "Mon Oct 13 2025" "Version 0.0.1" "VCS" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -6,9 +6,9 @@ include/VCS_dynchar.h
 .SH SYNOPSIS
 .br
 .PP
-\fR#include <stdint\&.h>\fP
+\fC#include <stdint\&.h>\fP
 .br
-\fR#include <stddef\&.h>\fP
+\fC#include <stddef\&.h>\fP
 .br
 
 .SS "Data Structures"
@@ -28,33 +28,12 @@ include/VCS_dynchar.h
 .RI "typedef struct \fBVCS_dynchar\fP \fBVCS_dynchar_t\fP"
 .br
 .in -1c
-.SS "Functions"
-
-.in +1c
-.ti -1c
-.RI "\fBVCS_dynchar_t\fP \fBVCS_make_dynchar\fP (char c, \fBVCS_cpushader\fP fg, \fBVCS_cpushader\fP bg, void *fgarg, void *bgarg)"
-.br
-.ti -1c
-.RI "uint32_t \fBVCS_blackshader\fP (int x, int y, void *arg)"
-.br
-.ti -1c
-.RI "uint32_t \fBVCS_whiteshader\fP (int x, int y, void *arg)"
-.br
-.in -1c
 .SH "Typedef Documentation"
 .PP 
 .SS "typedef uint32_t(* VCS_cpushader) (int, int, void *)"
 
 .SS "typedef struct \fBVCS_dynchar\fP \fBVCS_dynchar_t\fP"
-
-.SH "Function Documentation"
-.PP 
-.SS "uint32_t VCS_blackshader (int x, int y, void * arg)"
-
-.SS "\fBVCS_dynchar_t\fP VCS_make_dynchar (char c, \fBVCS_cpushader\fP fg, \fBVCS_cpushader\fP bg, void * fgarg, void * bgarg)"
-
-.SS "uint32_t VCS_whiteshader (int x, int y, void * arg)"
-
+A 'dynamic character' used to specify a given character along with how to render its foreground and background\&. Typically found in the contents of a \fBVCS_renderpanel\fP\&. 
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for VCS from the source code\&.
