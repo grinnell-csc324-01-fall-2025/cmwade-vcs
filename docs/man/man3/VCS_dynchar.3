@@ -1,0 +1,124 @@
+.TH "VCS_dynchar" 3 "Mon Oct 13 2025" "Version 0.0.1" "VCS" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+VCS_dynchar
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <VCS_dynchar\&.h>\fP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "char \fBc\fP"
+.br
+.ti -1c
+.RI "\fBVCS_cpushader\fP \fBfg\fP"
+.br
+.ti -1c
+.RI "\fBVCS_cpushader\fP \fBbg\fP"
+.br
+.ti -1c
+.RI "void * \fBfgarg\fP"
+.br
+.ti -1c
+.RI "void * \fBbgarg\fP"
+.br
+.in -1c
+.SS "Related Functions"
+(Note that these are not member functions\&.) 
+.in +1c
+.ti -1c
+.RI "static \fBVCS_dynchar_t\fP \fBCHBLANK\fP = (\fBVCS_dynchar_t\fP){' ',\fBVCS_whiteshader\fP,\fBVCS_blackshader\fP,NULL,NULL}"
+.br
+.ti -1c
+.RI "\fBVCS_cpushader\fP"
+.br
+.ti -1c
+.RI "\fBVCS_dynchar_t\fP \fBVCS_make_dynchar\fP (char \fBc\fP, \fBVCS_cpushader\fP \fBfg\fP, \fBVCS_cpushader\fP \fBbg\fP, void *\fBfgarg\fP, void *\fBbgarg\fP)"
+.br
+.ti -1c
+.RI "uint32_t \fBVCS_blackshader\fP (int x, int y, void *arg)"
+.br
+.ti -1c
+.RI "uint32_t \fBVCS_whiteshader\fP (int x, int y, void *arg)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A 'dynamic character' used to specify a given character along with how to render its foreground and background\&. Typically found in the contents of a \fBVCS_renderpanel\fP\&. 
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "\fBVCS_dynchar_t\fP CHBLANK = (\fBVCS_dynchar_t\fP){' ',\fBVCS_whiteshader\fP,\fBVCS_blackshader\fP,NULL,NULL}\fC [related]\fP"
+A static variable holding a \fBVCS_dynchar\fP which is rendered as a black square\&. When a \fBVCS_renderpanel\fP is cleared, its characters are all set to this\&. 
+.SS "uint32_t VCS_blackshader (int x, int y, void * arg)\fC [related]\fP"
+A built-in cpushader\&. Unconditionally returns a black pixel\&. 
+.SS "VCS_cpushader\fC [related]\fP"
+A function pointer type which matches the expected signature of a \fBVCS_dynchar\fP's shader\&. Any shaders you write yourself must conform to this format\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIx\fP The x position of the pixel being drawn relative to the top-left of the character's grid square\&. 
+.br
+\fIy\fP The y position of the pixel being drawn relative to the top-left of the character's grid square\&. 
+.br
+\fIarg\fP A void pointer to an argument, or NULL\&. What is passed here depends on \fBVCS_dynchar\&.fgarg\fP and \fBVCS_dynchar\&.bgarg\fP\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+A uint32_t representing a color in ABGR8888 format\&.
+.RE
+.PP
+This example shows how to define a shader that renders a uniform dark blue: 
+.PP
+.nf
+uint32_t darkblueshader(int x, int y, void* arg) { 
+ return 0xff550000;
+}
+
+.fi
+.PP
+ 
+.SS "\fBVCS_dynchar_t\fP VCS_make_dynchar (char c, \fBVCS_cpushader\fP fg, \fBVCS_cpushader\fP bg, void * fgarg, void * bgarg)\fC [related]\fP"
+Constructs a \fBVCS_dynchar\fP and returns it by value\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIc\fP The character to render\&. 
+.br
+\fIfg\fP A pointer to the VCS_cpushader with which to render the foreground\&. 
+.br
+\fIbg\fP A pointer to the VCS_cpushader with which to render the background\&. 
+.br
+\fIfgarg\fP A void pointer which will be passed to the foreground shader as the argument when this character is rendered\&. May be NULL\&. 
+.br
+\fIbgarg\fP Like fgarg, but passed to the background shader\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+A \fBVCS_dynchar\fP\&. Note that is is passed by value, not by reference\&. 
+.RE
+.PP
+
+.SS "uint32_t VCS_whiteshader (int x, int y, void * arg)\fC [related]\fP"
+A built-in cpushader\&. Unconditionally returns a white pixel\&. 
+.SH "Field Documentation"
+.PP 
+.SS "\fBVCS_cpushader\fP bg"
+The shader used to draw the character's background (the pixels that are in the character's grid space, but aren't used to draw the character) 
+.SS "void* bgarg"
+A pointer which is passed to the background shader\&. Used in the case of shaders that rely on external info\&. 
+.SS "char c"
+The character to render\&. 
+.SS "\fBVCS_cpushader\fP fg"
+The shader used to draw the character's foreground (the pixels that correspond to the character itself) 
+.SS "void* fgarg"
+A pointer which is passed to the foreground shader\&. Used in the case of shaders that rely on external info\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for VCS from the source code\&.

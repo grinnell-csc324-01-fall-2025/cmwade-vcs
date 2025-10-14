@@ -1,0 +1,93 @@
+.TH "VCS_info" 3 "Mon Oct 13 2025" "Version 0.0.1" "VCS" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+VCS_info
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <VCS_info\&.h>\fP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "int \fBsuccess\fP"
+.br
+.ti -1c
+.RI "int \fBwidth\fP"
+.br
+.ti -1c
+.RI "int \fBheight\fP"
+.br
+.ti -1c
+.RI "int \fBcharwidth\fP"
+.br
+.ti -1c
+.RI "int \fBcharheight\fP"
+.br
+.ti -1c
+.RI "SDL_Window * \fBwindow\fP"
+.br
+.ti -1c
+.RI "SDL_Renderer * \fBrenderer\fP"
+.br
+.ti -1c
+.RI "SDL_Texture * \fBrenderTexture\fP"
+.br
+.ti -1c
+.RI "uint32_t * \fBfg\fP"
+.br
+.ti -1c
+.RI "uint32_t * \fBbg\fP"
+.br
+.ti -1c
+.RI "SDL_Surface * \fBtextSurface\fP"
+.br
+.ti -1c
+.RI "TTF_Font * \fBfont\fP"
+.br
+.ti -1c
+.RI "TTF_TextEngine * \fBtextEngine\fP"
+.br
+.ti -1c
+.RI "\fBVCS_renderpanel_t\fP * \fBrp\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Contains references to everything relevant to the current VCS instance\&. Created by \fBVCS_init()\fP, destroyed by \fBVCS_quit()\fP\&. 
+.SH "Field Documentation"
+.PP 
+.SS "uint32_t* bg"
+Temporary buffer used to render the backgrounds of each character\&. You shouldn't need to touch this\&. 
+.SS "int charheight"
+The height, in pixels, of one character\&. 
+.SS "int charwidth"
+The width, in pixels, of one character\&. 
+.SS "uint32_t* fg"
+Temporary buffer used to render the foregrounds of each character\&. You shouldn't need to touch this\&. 
+.SS "TTF_Font* font"
+Reference to the TTF font loaded by SDL\&. 
+.SS "int height"
+The height, in characters, of the main renderpanel\&. 
+.SS "SDL_Renderer* renderer"
+A reference to the SDL renderer\&. 
+.SS "SDL_Texture* renderTexture"
+A reference to the SDL texture which stores the final version of each frame\&. Updated by \fBVCS_update()\fP, and drawn to the screen by \fBVCS_render()\fP\&. 
+.SS "\fBVCS_renderpanel_t\fP* rp"
+Reference to the main renderpanel\&. Edit this to draw to the screen\&. 
+.SS "int success"
+Set to 0 if initialization failed somehow, 1 otherwise\&. Check this to make sure it's safe to proceed after \fBVCS_init()\fP\&. 
+.SS "TTF_TextEngine* textEngine"
+Reference to SDL's text engine\&. 
+.SS "SDL_Surface* textSurface"
+Reference to the SDL surface used to render the unshaded versions of each character from the TTF font\&. You shouldn't need to touch this\&. 
+.SS "int width"
+The width, in characters, of the main renderpanel\&. 
+.SS "SDL_Window* window"
+A reference to the SDL window in which everything is drawn\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for VCS from the source code\&.

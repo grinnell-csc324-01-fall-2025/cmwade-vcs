@@ -1,0 +1,147 @@
+.TH "VCS_renderpanel_t" 3 "Version 0.0.1" "VCS" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+VCS_renderpanel_t
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <VCS_renderpanel\&.h>\fP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "int \fBwidth\fP"
+.br
+.ti -1c
+.RI "int \fBheight\fP"
+.br
+.ti -1c
+.RI "\fBVCS_dynchar_t\fP * \fBcontent\fP"
+.br
+.in -1c
+.SS "Related Symbols"
+(Note that these are not member symbols\&.) 
+.in +1c
+.ti -1c
+.RI "\fBVCS_renderpanel_t\fP * \fBVCS_make_rp\fP (int \fBwidth\fP, int \fBheight\fP)"
+.br
+.ti -1c
+.RI "void \fBVCS_rp_set\fP (\fBVCS_renderpanel_t\fP *rp, int x, int y, \fBVCS_dynchar_t\fP c)"
+.br
+.ti -1c
+.RI "void \fBVCS_rp_drawto\fP (\fBVCS_renderpanel_t\fP *source, \fBVCS_renderpanel_t\fP *dest, int x, int y, int transparent)"
+.br
+.ti -1c
+.RI "void \fBVCS_rp_clear\fP (\fBVCS_renderpanel_t\fP *rp)"
+.br
+.ti -1c
+.RI "void \fBVCS_rp_free_contents\fP (\fBVCS_renderpanel_t\fP *rp)"
+.br
+.in -1c
+.SH "Friends And Related Symbol Documentation"
+.PP 
+.SS "\fBVCS_renderpanel_t\fP * VCS_make_rp (int width, int height)\fR [related]\fP"
+Creates and returns a pointer to a new \fBVCS_renderpanel_t\fP\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIwidth\fP The width to give the initialized renderpanel\&. 
+.br
+\fIheight\fP The height to give the initialized renderpanel\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Returns a pointer to a \fBVCS_renderpanel_t\fP\&. You are expected to free its contents with \fBVCS_rp_free_contents()\fP, and the pointer itself with free()\&.
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBVCS_renderpanel_t\fP 
+.RE
+.PP
+
+.SS "void VCS_rp_clear (\fBVCS_renderpanel_t\fP * rp)\fR [related]\fP"
+Sets every character in a given \fBVCS_renderpanel_t\fP to CHBLANK\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIrp\fP The renderpanel to clear\&. 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+CHBLANK 
+.RE
+.PP
+
+.SS "void VCS_rp_drawto (\fBVCS_renderpanel_t\fP * source, \fBVCS_renderpanel_t\fP * dest, int x, int y, int transparent)\fR [related]\fP"
+Draws a \fBVCS_renderpanel_t\fP onto another \fBVCS_renderpanel_t\fP with optional transparency\&. Useful for windows, widgets, etc\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIsource\fP The renderpanel to use as a drawing source\&. 
+.br
+\fIdest\fP The renderpanel which will be drawn on\&. 
+.br
+\fIx\fP The x position of \fRdest\fP on which to place the top-left corner of \fRsource\fP, where far left is 0\&. 
+.br
+\fIy\fP The y position of \fRdest\fP on which to place the top-left corner of \fRsource\fP, where top is 0\&. 
+.br
+\fItransparent\fP A value of 1 will cause all space characters in \fRsrc\fP to not replace characters in \fRdest\fP\&. A value of 0 disables this\&. 
+.RE
+.PP
+
+.SS "void VCS_rp_free_contents (\fBVCS_renderpanel_t\fP * rp)\fR [related]\fP"
+Frees the contents of a given \fBVCS_renderpanel_t\fP\&. You must still free the pointer to the renderpanel itself with free()\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIrp\fP The renderpanel of which to free the contents\&. 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBVCS_renderpanel_t\fP 
+.RE
+.PP
+
+.SS "void VCS_rp_set (\fBVCS_renderpanel_t\fP * rp, int x, int y, \fBVCS_dynchar_t\fP c)\fR [related]\fP"
+Sets a character in a given \fBVCS_renderpanel_t\fP to a given \fBVCS_dynchar_t\fP\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIrp\fP the renderpanel to edit\&. 
+.br
+\fIx\fP The x position of the character to set, where far left is 0\&. 
+.br
+\fIy\fP The y position of the character to set, where top is 0\&. 
+.br
+\fIc\fP A \fBVCS_dynchar_t\fP to set the character to\&. 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBVCS_dynchar_t\fP, \fBVCS_make_dynchar()\fP 
+.RE
+.PP
+
+.SH "Field Documentation"
+.PP 
+.SS "\fBVCS_dynchar_t\fP* content"
+
+.SS "int height"
+
+.SS "int width"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for VCS from the source code\&.

@@ -1,0 +1,41 @@
+.TH "include/VCS_renderpanel.h" 3 "Mon Oct 13 2025" "Version 0.0.1" "VCS" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+include/VCS_renderpanel.h
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'VCS_dynchar\&.h'\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBVCS_renderpanel\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef struct \fBVCS_renderpanel\fP \fBVCS_renderpanel_t\fP"
+.br
+.in -1c
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef struct \fBVCS_renderpanel\fP \fBVCS_renderpanel_t\fP"
+A renderpanel is the primary data structure used to store information about what to draw to the screen\&. It consists of an array to store \fBVCS_dynchar\fP structs which can either be used to render to the screen or written to a different \fBVCS_renderpanel\fP\&.
+.PP
+A \fBVCS_renderpanel\fP is typically constructed with \fBVCS_make_rp()\fP and destroyed by calling \fBVCS_rp_free_contents()\fP and then free() on a pointer to the renderpanel\&. \fBVCS_rp_set()\fP is the typical way to edit the contents in order to draw to the renderpanel\&.
+.PP
+\fBNote\fP
+.RS 4
+A special \fBVCS_renderpanel\fP is created by \fBVCS_init()\fP and stored as \fBVCS_info\&.rp\fP\&. It is automatically destroyed along with all the other fields of the \fBVCS_info\fP struct by \fBVCS_quit()\fP, so there is no need to call \fBVCS_rp_free_contents()\fP on it\&. This special renderpanel is read by \fBVCS_update()\fP to decide what to actually draw to the screen, so anything you want displayed must be written to it eventually\&. 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for VCS from the source code\&.

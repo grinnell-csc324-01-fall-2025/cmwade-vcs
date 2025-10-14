@@ -1,0 +1,39 @@
+.TH "include/VCS_dynchar.h" 3 "Mon Oct 13 2025" "Version 0.0.1" "VCS" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+include/VCS_dynchar.h
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdint\&.h>\fP
+.br
+\fC#include <stddef\&.h>\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBVCS_dynchar\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef uint32_t(* \fBVCS_cpushader\fP) (int, int, void *)"
+.br
+.ti -1c
+.RI "typedef struct \fBVCS_dynchar\fP \fBVCS_dynchar_t\fP"
+.br
+.in -1c
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef uint32_t(* VCS_cpushader) (int, int, void *)"
+
+.SS "typedef struct \fBVCS_dynchar\fP \fBVCS_dynchar_t\fP"
+A 'dynamic character' used to specify a given character along with how to render its foreground and background\&. Typically found in the contents of a \fBVCS_renderpanel\fP\&. 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for VCS from the source code\&.
