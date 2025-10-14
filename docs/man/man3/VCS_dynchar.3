@@ -1,4 +1,4 @@
-.TH "VCS_dynchar" 3 "Mon Oct 13 2025" "Version 0.0.1" "VCS" \" -*- nroff -*-
+.TH "VCS_dynchar" 3 "Version 0.0.1" "VCS" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -7,7 +7,7 @@ VCS_dynchar
 .br
 .PP
 .PP
-\fC#include <VCS_dynchar\&.h>\fP
+\fR#include <VCS_dynchar\&.h>\fP
 .SS "Data Fields"
 
 .in +1c
@@ -27,8 +27,8 @@ VCS_dynchar
 .RI "void * \fBbgarg\fP"
 .br
 .in -1c
-.SS "Related Functions"
-(Note that these are not member functions\&.) 
+.SS "Related Symbols"
+(Note that these are not member symbols\&.) 
 .in +1c
 .ti -1c
 .RI "static \fBVCS_dynchar_t\fP \fBCHBLANK\fP = (\fBVCS_dynchar_t\fP){' ',\fBVCS_whiteshader\fP,\fBVCS_blackshader\fP,NULL,NULL}"
@@ -48,15 +48,16 @@ VCS_dynchar
 .in -1c
 .SH "Detailed Description"
 .PP 
-A 'dynamic character' used to specify a given character along with how to render its foreground and background\&. Typically found in the contents of a \fBVCS_renderpanel\fP\&. 
-.SH "Friends And Related Function Documentation"
+A "dynamic character" used to specify a given character along with how to render its foreground and background\&. Typically found in the contents of a \fBVCS_renderpanel\fP\&. 
+.SH "Friends And Related Symbol Documentation"
 .PP 
-.SS "\fBVCS_dynchar_t\fP CHBLANK = (\fBVCS_dynchar_t\fP){' ',\fBVCS_whiteshader\fP,\fBVCS_blackshader\fP,NULL,NULL}\fC [related]\fP"
+.SS "\fBVCS_dynchar_t\fP CHBLANK = (\fBVCS_dynchar_t\fP){' ',\fBVCS_whiteshader\fP,\fBVCS_blackshader\fP,NULL,NULL}\fR [related]\fP"
 A static variable holding a \fBVCS_dynchar\fP which is rendered as a black square\&. When a \fBVCS_renderpanel\fP is cleared, its characters are all set to this\&. 
-.SS "uint32_t VCS_blackshader (int x, int y, void * arg)\fC [related]\fP"
+.SS "uint32_t VCS_blackshader (int x, int y, void * arg)\fR [related]\fP"
 A built-in cpushader\&. Unconditionally returns a black pixel\&. 
-.SS "VCS_cpushader\fC [related]\fP"
+.SS "VCS_cpushader\fR [related]\fP"
 A function pointer type which matches the expected signature of a \fBVCS_dynchar\fP's shader\&. Any shaders you write yourself must conform to this format\&.
+
 .PP
 \fBParameters\fP
 .RS 4
@@ -82,16 +83,17 @@ uint32_t darkblueshader(int x, int y, void* arg) {
 .fi
 .PP
  
-.SS "\fBVCS_dynchar_t\fP VCS_make_dynchar (char c, \fBVCS_cpushader\fP fg, \fBVCS_cpushader\fP bg, void * fgarg, void * bgarg)\fC [related]\fP"
+.SS "\fBVCS_dynchar_t\fP VCS_make_dynchar (char c, \fBVCS_cpushader\fP fg, \fBVCS_cpushader\fP bg, void * fgarg, void * bgarg)\fR [related]\fP"
 Constructs a \fBVCS_dynchar\fP and returns it by value\&.
+
 .PP
 \fBParameters\fP
 .RS 4
 \fIc\fP The character to render\&. 
 .br
-\fIfg\fP A pointer to the VCS_cpushader with which to render the foreground\&. 
+\fIfg\fP A pointer to the \fBVCS_cpushader\fP with which to render the foreground\&. 
 .br
-\fIbg\fP A pointer to the VCS_cpushader with which to render the background\&. 
+\fIbg\fP A pointer to the \fBVCS_cpushader\fP with which to render the background\&. 
 .br
 \fIfgarg\fP A void pointer which will be passed to the foreground shader as the argument when this character is rendered\&. May be NULL\&. 
 .br
@@ -104,7 +106,7 @@ A \fBVCS_dynchar\fP\&. Note that is is passed by value, not by reference\&.
 .RE
 .PP
 
-.SS "uint32_t VCS_whiteshader (int x, int y, void * arg)\fC [related]\fP"
+.SS "uint32_t VCS_whiteshader (int x, int y, void * arg)\fR [related]\fP"
 A built-in cpushader\&. Unconditionally returns a white pixel\&. 
 .SH "Field Documentation"
 .PP 

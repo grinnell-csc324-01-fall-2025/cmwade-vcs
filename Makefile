@@ -26,7 +26,7 @@ uninstall:
 	rm $(INSTALL)$(LIBNAME)
 	rm -r $(INCLUDE)
 
-docs: $(CFILES) $(HFILES)
+docs: $(CFILES) $(HFILES) Doxyfile
 	doxygen
 
 clean:

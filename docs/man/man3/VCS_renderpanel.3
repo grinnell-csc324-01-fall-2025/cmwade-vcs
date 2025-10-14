@@ -1,4 +1,4 @@
-.TH "VCS_renderpanel" 3 "Mon Oct 13 2025" "Version 0.0.1" "VCS" \" -*- nroff -*-
+.TH "VCS_renderpanel" 3 "Version 0.0.1" "VCS" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -7,7 +7,7 @@ VCS_renderpanel
 .br
 .PP
 .PP
-\fC#include <VCS_renderpanel\&.h>\fP
+\fR#include <VCS_renderpanel\&.h>\fP
 .SS "Data Fields"
 
 .in +1c
@@ -21,8 +21,8 @@ VCS_renderpanel
 .RI "\fBVCS_dynchar_t\fP * \fBcontent\fP"
 .br
 .in -1c
-.SS "Related Functions"
-(Note that these are not member functions\&.) 
+.SS "Related Symbols"
+(Note that these are not member symbols\&.) 
 .in +1c
 .ti -1c
 .RI "\fBVCS_renderpanel_t\fP * \fBVCS_make_rp\fP (int \fBwidth\fP, int \fBheight\fP)"
@@ -43,8 +43,10 @@ VCS_renderpanel
 .SH "Detailed Description"
 .PP 
 A renderpanel is the primary data structure used to store information about what to draw to the screen\&. It consists of an array to store \fBVCS_dynchar\fP structs which can either be used to render to the screen or written to a different \fBVCS_renderpanel\fP\&.
+
 .PP
 A \fBVCS_renderpanel\fP is typically constructed with \fBVCS_make_rp()\fP and destroyed by calling \fBVCS_rp_free_contents()\fP and then free() on a pointer to the renderpanel\&. \fBVCS_rp_set()\fP is the typical way to edit the contents in order to draw to the renderpanel\&.
+
 .PP
 \fBNote\fP
 .RS 4
@@ -52,10 +54,11 @@ A special \fBVCS_renderpanel\fP is created by \fBVCS_init()\fP and stored as \fB
 .RE
 .PP
 
-.SH "Friends And Related Function Documentation"
+.SH "Friends And Related Symbol Documentation"
 .PP 
-.SS "\fBVCS_renderpanel_t\fP * VCS_make_rp (int width, int height)\fC [related]\fP"
+.SS "\fBVCS_renderpanel_t\fP * VCS_make_rp (int width, int height)\fR [related]\fP"
 Creates and returns a pointer to a new \fBVCS_renderpanel\fP\&.
+
 .PP
 \fBParameters\fP
 .RS 4
@@ -75,8 +78,9 @@ Returns a pointer to a \fBVCS_renderpanel\fP\&. You are expected to free its con
 .RE
 .PP
 
-.SS "void VCS_rp_clear (\fBVCS_renderpanel_t\fP * rp)\fC [related]\fP"
+.SS "void VCS_rp_clear (\fBVCS_renderpanel_t\fP * rp)\fR [related]\fP"
 Sets every character in a given \fBVCS_renderpanel\fP to CHBLANK\&.
+
 .PP
 \fBParameters\fP
 .RS 4
@@ -85,12 +89,13 @@ Sets every character in a given \fBVCS_renderpanel\fP to CHBLANK\&.
 .PP
 \fBSee also\fP
 .RS 4
-\fBCHBLANK\fP 
+CHBLANK 
 .RE
 .PP
 
-.SS "void VCS_rp_drawto (\fBVCS_renderpanel_t\fP * source, \fBVCS_renderpanel_t\fP * dest, int x, int y, int transparent)\fC [related]\fP"
+.SS "void VCS_rp_drawto (\fBVCS_renderpanel_t\fP * source, \fBVCS_renderpanel_t\fP * dest, int x, int y, int transparent)\fR [related]\fP"
 Draws a \fBVCS_renderpanel\fP onto another \fBVCS_renderpanel\fP with optional transparency\&. Useful for windows, widgets, etc\&.
+
 .PP
 \fBParameters\fP
 .RS 4
@@ -98,16 +103,17 @@ Draws a \fBVCS_renderpanel\fP onto another \fBVCS_renderpanel\fP with optional t
 .br
 \fIdest\fP The renderpanel which will be drawn on\&. 
 .br
-\fIx\fP The x position of \fCdest\fP on which to place the top-left corner of \fCsource\fP, where far left is 0\&. 
+\fIx\fP The x position of \fRdest\fP on which to place the top-left corner of \fRsource\fP, where far left is 0\&. 
 .br
-\fIy\fP The y position of \fCdest\fP on which to place the top-left corner of \fCsource\fP, where top is 0\&. 
+\fIy\fP The y position of \fRdest\fP on which to place the top-left corner of \fRsource\fP, where top is 0\&. 
 .br
-\fItransparent\fP A value of 1 will cause all space characters in \fCsrc\fP to not replace characters in \fCdest\fP\&. A value of 0 disables this\&. 
+\fItransparent\fP A value of 1 will cause all space characters in \fRsrc\fP to not replace characters in \fRdest\fP\&. A value of 0 disables this\&. 
 .RE
 .PP
 
-.SS "void VCS_rp_free_contents (\fBVCS_renderpanel_t\fP * rp)\fC [related]\fP"
+.SS "void VCS_rp_free_contents (\fBVCS_renderpanel_t\fP * rp)\fR [related]\fP"
 Frees the contents of a given \fBVCS_renderpanel\fP\&. You must still free the pointer to the renderpanel itself with free()\&.
+
 .PP
 \fBParameters\fP
 .RS 4
@@ -120,8 +126,9 @@ Frees the contents of a given \fBVCS_renderpanel\fP\&. You must still free the p
 .RE
 .PP
 
-.SS "void VCS_rp_set (\fBVCS_renderpanel_t\fP * rp, int x, int y, \fBVCS_dynchar_t\fP c)\fC [related]\fP"
-Sets a character in a given \fBVCS_renderpanel\fP to a given VCS_dynchar_t\&.
+.SS "void VCS_rp_set (\fBVCS_renderpanel_t\fP * rp, int x, int y, \fBVCS_dynchar_t\fP c)\fR [related]\fP"
+Sets a character in a given \fBVCS_renderpanel\fP to a given \fBVCS_dynchar_t\fP\&.
+
 .PP
 \fBParameters\fP
 .RS 4
@@ -131,12 +138,12 @@ Sets a character in a given \fBVCS_renderpanel\fP to a given VCS_dynchar_t\&.
 .br
 \fIy\fP The y position of the character to set, where top is 0\&. 
 .br
-\fIc\fP A VCS_dynchar_t to set the character to\&. 
+\fIc\fP A \fBVCS_dynchar_t\fP to set the character to\&. 
 .RE
 .PP
 \fBSee also\fP
 .RS 4
-\fBVCS_dynchar_t\fP, \fBVCS_make_dynchar()\fP 
+\fBVCS_dynchar_t\fP, VCS_make_dynchar() 
 .RE
 .PP
 

@@ -1,4 +1,4 @@
-.TH "include/VCS_SDL3.h" 3 "Mon Oct 13 2025" "Version 0.0.1" "VCS" \" -*- nroff -*-
+.TH "include/VCS_SDL3.h" 3 "Version 0.0.1" "VCS" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -6,17 +6,17 @@ include/VCS_SDL3.h
 .SH SYNOPSIS
 .br
 .PP
-\fC#include 'SDL3/SDL\&.h'\fP
+\fR#include 'SDL3/SDL\&.h'\fP
 .br
-\fC#include 'SDL3/SDL_main\&.h'\fP
+\fR#include 'SDL3/SDL_main\&.h'\fP
 .br
-\fC#include 'SDL3_ttf/SDL_ttf\&.h'\fP
+\fR#include 'SDL3_ttf/SDL_ttf\&.h'\fP
 .br
-\fC#include 'VCS_dynchar\&.h'\fP
+\fR#include 'VCS_dynchar\&.h'\fP
 .br
-\fC#include 'VCS_renderpanel\&.h'\fP
+\fR#include 'VCS_renderpanel\&.h'\fP
 .br
-\fC#include 'VCS_info\&.h'\fP
+\fR#include 'VCS_info\&.h'\fP
 .br
 
 .SS "Functions"
@@ -90,7 +90,7 @@ Call this function from the main thread only\&.
 .PP
 
 .SS "int VCS_update (\fBVCS_info_t\fP * info)"
-Draws the characters stored in \fCinfo\&.rp\fP to the texture buffers stored in \fCinfo\fP so that they may be rendered to the screen later\&. Call this once, after modifying the contents of \fCinfo\&.rp\fP, to allow \fBVCS_render()\fP to render the updated contents\&. Also checks the event queue to see if the application has been told to close; store and reference the return value to make sure you successfully handle when the close button is pressed\&. 
+Draws the characters stored in \fRinfo\&.rp\fP to the texture buffers stored in \fRinfo\fP so that they may be rendered to the screen later\&. Call this once, after modifying the contents of \fRinfo\&.rp\fP, to allow \fBVCS_render()\fP to render the updated contents\&. Also checks the event queue to see if the application has been told to close; store and reference the return value to make sure you successfully handle when the close button is pressed\&. 
 .PP
 \fBParameters\fP
 .RS 4

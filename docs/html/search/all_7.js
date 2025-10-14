@@ -2,7 +2,7 @@ var searchData=
 [
   ['vcs_2eh_0',['VCS.h',['../VCS_8h.html',1,'']]],
   ['vcs_5fblackshader_1',['VCS_blackshader',['../structVCS__dynchar.html#aa638aa0729441baf2ad53ee9b092a985',1,'VCS_dynchar']]],
-  ['vcs_5fcpushader_2',['VCS_cpushader',['../VCS__dynchar_8h.html#aace5ff27887c0c2c27ef67634a5d7cd7',1,'VCS_cpushader():&#160;VCS_dynchar.h'],['../structVCS__dynchar.html#a5ff57402b57598250f075370db3ac57a',1,'VCS_dynchar::VCS_cpushader()']]],
+  ['vcs_5fcpushader_2',['VCS_cpushader',['../structVCS__dynchar.html#a5ff57402b57598250f075370db3ac57a',1,'VCS_dynchar::VCS_cpushader()'],['../VCS__dynchar_8h.html#aace5ff27887c0c2c27ef67634a5d7cd7',1,'VCS_cpushader:&#160;VCS_dynchar.h']]],
   ['vcs_5fdynchar_3',['VCS_dynchar',['../structVCS__dynchar.html',1,'']]],
   ['vcs_5fdynchar_2eh_4',['VCS_dynchar.h',['../VCS__dynchar_8h.html',1,'']]],
   ['vcs_5fdynchar_5ft_5',['VCS_dynchar_t',['../VCS__dynchar_8h.html#abca3effc57435900a86e356f62526bfa',1,'VCS_dynchar.h']]],
